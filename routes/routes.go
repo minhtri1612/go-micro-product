@@ -1,0 +1,24 @@
+package routes
+
+import (
+	"github.com/minhtri1612/go-micro-product/controller"
+
+	"github.com/gin-gonic/gin"
+)
+
+// SetupRoutes configures the API routes for the product service
+func SetupRoutes(router *gin.Engine, productController *controller.ProductController) {
+	// Health check
+	router.GET("/health", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"status": "UP",
+		})
+	})
+
+	// Product routes
+	router.POST("/products", productController.CreateProduct)
+	router.GET("/products", productController.GetProducts)
+	router.GET("/products/:id", productController.GetProduct)
+	router.PUT("/products/:id", productController.UpdateProduct)
+	router.DELETE("/products/:id", productController.DeleteProduct)
+}
