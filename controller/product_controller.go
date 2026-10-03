@@ -23,7 +23,7 @@ func NewProductController(db *sql.DB) *ProductController {
 
 const (
 	queryInsertProduct     = "INSERT INTO products (name, description, price) VALUES ($1, $2, $3) RETURNING id"
-	querySelectAllProducts = "SELECT id, name, description, price, category, image_url, stock_quantity, created_at, updated_at FROM products"
+	querySelectAllProducts = "SELECT id, name, description, price, category, image_url, stock_quantity, created_at, updated_at FROM products ORDER BY id DESC"
 	querySelectProductByID = "SELECT id, name, description, price, category, image_url, stock_quantity, created_at, updated_at FROM products WHERE id = $1"
 	queryUpdateProduct     = "UPDATE products SET name = $1, description = $2, price = $3 WHERE id = $4"
 	queryDeleteProduct     = "DELETE FROM products WHERE id = $1"
