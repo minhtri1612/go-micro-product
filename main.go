@@ -12,6 +12,7 @@ import (
 )
 
 func main() {
+	// canary retry: new image tag so prod rollout leaves the degraded ReplicaSet
 	log.Println("Product Service main function started")
 	// Initialize database connection
 	log.Println("Calling db.GetDB()...")
